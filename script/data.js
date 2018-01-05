@@ -45,6 +45,6 @@ button.onclick = function() {
   else{
     document.cookie = "destination="+destination+";";
     console.log(document.cookie)
-    location.href='../html/secondScreen.html';
+    location.href='../html/secondScreen.html?destination='+destination;
   }
 }
