@@ -32,8 +32,9 @@
     </style>
     <style>
             #grad1 {
-                width: 500px;
-                height: 50px;
+                border-radius: 25px;
+                width: 400px;
+                height: 40px;
                 background: pink; /* For browsers that do not support gradients */
                 background: linear-gradient(to right,pink ,white);
             }
@@ -48,6 +49,20 @@
          body {
             font-family: 'Abhaya Libre';font-size: 22px;
          }
+    </style>
+    <style>
+        .button {
+                      background-color: #e7e7e7; color: black;
+                      border: none;
+                      color: rgb(14, 6, 6);
+                      padding: 10px 21px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      font-size: 20px;
+                      margin: 2.5px 1.25px;
+                      cursor: pointer;
+                    }
     </style>
 
 </head>
@@ -71,7 +86,7 @@
         <h1>Thank you for your support to our web</h1>
     </div>
     </br></br>
-    <center><input type="button" onclick="location.href='firstScreen.html';" value="Exit" /></center>
+    <center><input type="button" onclick="location.href='firstScreen.html';" value="Exit" class="button"/></center>
     </div>
 
 </body>

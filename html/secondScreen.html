@@ -1,22 +1,56 @@
 <html>
   <head>
+    <style>
+      body, html {
+          height: 100%;
+          margin: 0;
+      }
+
+      .bg {
+          /* The image used */
+          background-image: url("../image/we.jpg");
+
+          /* Full height */
+          height: 100%;
+
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+      </style>
       <style>
       </style>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+      <link href='https://fonts.googleapis.com/css?family=Abhaya Libre' rel='stylesheet'>
+      <style>
+          body {
+               font-family: 'Abhaya Libre';font-size: 22px;
+          }
+      </style>
+      <style>
+         h1{
+           border-radius: 20px;
+         }
+      </style>
   </head>
 
   <body>
-    <h1>We recommend you to take </h1>
-    <div ng-app="test" ng-controller="myCtrl" >
-      <button ng-repeat = "i in showBusNumber()" width="200" height="170" value="{{i}}" ng-click= "testFunction(i)">
+    <div class="bg">
+    </br></br>
+      <h1 style="text-align:center;color:#D55373;background-color:#F6DBD1;border:2px solid black;width:500px;margin:auto;font-size:32px">We recommend you to take the bus </h1>
+  </br></br>
+      <center><div ng-app="test" ng-controller="myCtrl" >
+        <button ng-repeat = "i in showBusNumber()" width="200" height="170" value="{{i}}" ng-click= "testFunction(i)">
         <img src="../image/busIcon.png" alt="busIcon" width="150" height="150">
       </br>
         <div ng-if="i==6">No.5A</div>
         <div ng-if="i!=6">No.{{i}}</div>
       </button>
-    </div>
+      </div>
+    </center>
 
     <script src="../script/secondPageCode.js"></script>
-
+  </div>
   </body>
 </html>
