@@ -39,19 +39,12 @@ select.innerHTML = temp
 var button = document.getElementById('button');
 button.onclick = function() {
   destination = select.value;
-  if(destination==0){
+  if(destination==""){
     window.alert("Please select destination");
   }
   else{
     document.cookie = "destination="+destination+";";
-    // document.cookie = "destination1="+destination+";";
     console.log(document.cookie)
     location.href='secondScreen.html';
   }
-
-
 }
-
-  //send cookie
-
-  //send to another page
