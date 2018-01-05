@@ -1,7 +1,7 @@
-destination = document.cookie;
-destination = destination.substring(destination.indexOf("=")+1,destination.length);
+var destination = document.cookie;
+destination = destination.substring(destination.lastIndexOf("=")+1,destination.length);
 
-console.log(destination)
+var temp = document.cookie.split(";")
 
 var stations = {"status":1,"data":[
     {"name":"Salaprakeaw","latitude":13.735581,"longitude":100.531774,"line":[1,2,3,4,5,6]},
@@ -34,50 +34,24 @@ var stations = {"status":1,"data":[
     {"name":"CU Terrace","latitude":13.740985,"longitude":100.525227,"line":[0,0,0,0,5,6]}]
 };
 
-var line=[document.getElementById("busLine1"),
-  document.getElementById("busLine2"),
-  document.getElementById("busLine3"),
-  document.getElementById("busLine4"),
-  document.getElementById("busLine5"),
-  document.getElementById("busLine6")];
+var app = angular.module("test",[]);
 
-  function showBusNumber(destination){
-      var res = "";
+app.controller("myCtrl",function($scope){
+  $scope.showBusNumber = function(){
+      var res = [];
       for(var i=1; i<=6; i++){
           if(stations.data[destination].line[i-1]!=0){
-              if(res == "") {
-                  res += i;
-              } else {
-                  res += ","+i;
-              }
+              res.push(i);
           }
       }
       console.log(res);
-      return res
+      return res;
+  };
+
+  $scope.testFunction = function(i){
+    document.cookie = "busLine="+i+";";
+    console.log(document.cookie);
+    location.href='thirdScreen.html';
   }
 
-  var set = showBusNumber(destination);
-  console.log(set);
-
-  // for(var i = 0;i<line.length;i++){
-  //   console.log(line[i]);
-  //   console.log(line[i].contentWindow);
-  //   console.log(line[i].contentWindow.document);
-  //   console.log(line[i].contentWindow.document.getElementById('busLine'));
-  //   var innerText = line[i].contentWindow.document.getElementById('busLine');
-  //   console.log(innerText)
-  //   innerText.innerHTML = "No."+(i+1);
-  // }
-
-for(var i = 1;i<line.length+1;i++){
-  if(set.indexOf(i)!=-1){
-  }
-  else{
-    line[i-1].style.display = 'none';
-  }
-}
-
-var button = document.getElementById("button")
-button.onclick = function(){
-
-}
+});

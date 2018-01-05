@@ -1,19 +1,21 @@
 <html>
   <head>
-
+      <style>
+      </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
   </head>
 
   <body>
-    <h1>We recommend you to take Pop bus No. </h1>
+    <h1>We recommend you to take </h1>
+    <div ng-app="test" ng-controller="myCtrl" >
+      <button ng-repeat = "i in showBusNumber()" width="200" height="170" value="{{i}}" ng-click= "testFunction(i)">
+        <img src="busIcon.png" alt="busIcon" width="150" height="150">
+      </br>
+        <div ng-if="i==6">No.5A</div>
+        <div ng-if="i!=6">No.{{i}}</div>
+      </button>
+    </div>
 
-    <iframe id="busLine1" src="chooseBusView.html" height="200" width="170" scrolling="no" ></iframe>
-    <iframe id="busLine2" src="chooseBusView.html" height="200" width="170" scrolling="no" ></iframe>
-    <iframe id="busLine3" src="chooseBusView.html" height="200" width="170" scrolling="no" ></iframe>
-    <iframe id="busLine4" src="chooseBusView.html" height="200" width="170" scrolling="no" ></iframe>
-    <iframe id="busLine5" src="chooseBusView.html" height="200" width="170" scrolling="no" ></iframe>
-    <iframe id="busLine6" src="chooseBusView.html" height="200" width="170" scrolling="no" ></iframe>
-  </br>
-    <input type="button" id="button" value="Continue" />
     <script src="secondPageCode.js"></script>
 
   </body>
