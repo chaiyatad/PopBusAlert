@@ -1,5 +1,8 @@
 var destination = document.cookie;
 destination = destination.substring(destination.lastIndexOf("=")+1,destination.length);
+console.log(destination)
+console.log(document.cookie)
+
 
 var temp = document.cookie.split(";")
 
@@ -51,7 +54,7 @@ app.controller("myCtrl",function($scope){
   $scope.testFunction = function(i){
     document.cookie = "busLine="+i+";";
     console.log(document.cookie);
-    location.href='thirdScreen.html';
+    location.href='../html/thirdScreen.html';
   }
 
 });

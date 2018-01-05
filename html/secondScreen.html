@@ -9,14 +9,14 @@
     <h1>We recommend you to take </h1>
     <div ng-app="test" ng-controller="myCtrl" >
       <button ng-repeat = "i in showBusNumber()" width="200" height="170" value="{{i}}" ng-click= "testFunction(i)">
-        <img src="busIcon.png" alt="busIcon" width="150" height="150">
+        <img src="../image/busIcon.png" alt="busIcon" width="150" height="150">
       </br>
         <div ng-if="i==6">No.5A</div>
         <div ng-if="i!=6">No.{{i}}</div>
       </button>
     </div>
 
-    <script src="secondPageCode.js"></script>
+    <script src="../script/secondPageCode.js"></script>
 
   </body>
 </html>
