@@ -1,5 +1,6 @@
 <html>
   <head>
+    <title>Pop Bus Alert</title>
     <style>
       body, html {
           height: 100%;
@@ -25,30 +26,75 @@
       <link href='https://fonts.googleapis.com/css?family=Abhaya Libre' rel='stylesheet'>
       <style>
           body {
-               font-family: 'Abhaya Libre';font-size: 22px;
+               font-family: 'Abhaya Libre';
+               font-size: 22px;
           }
-      </style>
-      <style>
          h1{
            border-radius: 20px;
          }
+            .button{
+              border-radius: 15px;
+              font-family: 'Abhaya Libre';
+              font-size: 16px;
+            }
+            .button:hover {background-color: rgb(180, 180, 180)}
+
       </style>
+      <style>
+          .button1 {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: rgb(245, 161, 238);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px rgb(124, 119, 119);
+          }
+
+          .button1:hover {background-color: rgb(245, 161, 238)}
+
+          .button1:active {
+            background-color:rgb(245, 161, 238);
+            box-shadow: 0 5px rgb(124, 119, 119);
+            transform: translateY(4px);
+          }
+      </style>
+      <style>
+        .button1 {
+                      background-color: #e7e7e7; color: black;
+                      border: none;
+                      color: rgb(14, 6, 6);
+                      padding: 10px 21px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      font-size: 20px;
+                      margin: 2.5px 1.25px;
+                      cursor: pointer;
+                    }
+    </style>
   </head>
 
   <body>
     <div class="bg">
     </br></br>
-      <h1 style="text-align:center;color:#D55373;background-color:#F6DBD1;border:2px solid black;width:500px;margin:auto;font-size:32px">We recommend you to take the bus </h1>
-  </br></br>
+      <h1 id="headText" style="text-align:center;color:#D55373;background-color:#F6DBD1;border:2px solid black;width:500px;margin:auto;font-size:32px">We recommend you to take the bus </h1>
+      </br></br>
       <center><div ng-app="test" ng-controller="myCtrl" >
-        <button ng-repeat = "i in showBusNumber()" width="200" height="170" value="{{i}}" ng-click= "testFunction(i)">
-        <img src="../image/busIcon.png" alt="busIcon" width="150" height="150">
-      </br>
-        <div ng-if="i==6">No.5A</div>
-        <div ng-if="i!=6">No.{{i}}</div>
+        <button ng-repeat = "i in showBusNumber()" width="200" height="170" value="{{i}}" id="{{i}}" ng-click= "testFunction(i)" ng-disabled="i==5||i==6" class = "button" >
+          <img src="../image/busIcon.png" alt="busIcon" width="150" height="150">
+          </br>
+          <div ng-if="i==6">No.5A</div>
+          <div ng-if="i!=6">No.{{i}}</div>
       </button>
       </div>
     </center>
+    <center><input type="button" id="ExitButton" onclick="location.href='firstScreen.html';" value="Exit" class="button1" style="display:none"/> </center>
 
     <script src="../script/secondPageCode.js"></script>
   </div>
