@@ -9,39 +9,39 @@ var text1 = document.getElementById("text1");
 var text2 = document.getElementById("text2");
 var text3 = document.getElementById("text3");
 
-setInterval(function() {
-    $.ajax({
-        url: 'http://45.76.188.63:3000/get/position',
-        type: "POST",
-        data: {
-            busnumber: $('#busnumberSelect').val(),
-            busid: $('#busidSelect').val()
-        },
-        beforeSend: (xhr) => {
-            xhr.setRequestHeader('Client-ID', 'f4n35oyh');
-            xhr.setRequestHeader('Client-Secret', '8m4xriwFTJaALQdD1pmmnnP9hyw8hpXx');
-        },
-        success: (data, textStatus, request) => {
-            $('#headArea').val(request.getAllResponseHeaders());
-            $('#bodyArea').val(JSON.stringify(data));
-            position = data;
-            //console.log(position);
-            $('#loadingCard').hide();
-        },
-        error: () => {
-            alert('Timeout');
-            $('#loadingCard').hide();
-        }
-    });
-    // $.post('http://45.76.188.63:3000/get/position', function(data, textStatus, xhr){
-    //     console.log(data);
-    //     position = data;
-    // });
-    // $.post('http://45.76.188.63:3000/get/stations', function(data, textStatus, xhr){
-    //     console.log(data);
-    //     stations = data;
-    // });
-}, 2000);
+// setInterval(function() {
+//     $.ajax({
+//         url: 'http://45.76.188.63:3000/get/position',
+//         type: "POST",
+//         data: {
+//             busnumber: $('#busnumberSelect').val(),
+//             busid: $('#busidSelect').val()
+//         },
+//         beforeSend: (xhr) => {
+//             xhr.setRequestHeader('Client-ID', 'f4n35oyh');
+//             xhr.setRequestHeader('Client-Secret', '8m4xriwFTJaALQdD1pmmnnP9hyw8hpXx');
+//         },
+//         success: (data, textStatus, request) => {
+//             $('#headArea').val(request.getAllResponseHeaders());
+//             $('#bodyArea').val(JSON.stringify(data));
+//             position = data;
+//             //console.log(position);
+//             $('#loadingCard').hide();
+//         },
+//         error: () => {
+//             alert('Timeout');
+//             $('#loadingCard').hide();
+//         }
+//     });
+//     // $.post('http://45.76.188.63:3000/get/position', function(data, textStatus, xhr){
+//     //     console.log(data);
+//     //     position = data;
+//     // });
+//     // $.post('http://45.76.188.63:3000/get/stations', function(data, textStatus, xhr){
+//     //     console.log(data);
+//     //     stations = data;
+//     // });
+// }, 2000);
 
 var stations = {"status":1,"data":[
     {"name":"Salaprakeaw","latitude":13.735581,"longitude":100.531774,"line":[1,2,3,4,5,6]},
@@ -74,24 +74,24 @@ var stations = {"status":1,"data":[
     {"name":"CU Terrace","latitude":13.740985,"longitude":100.525227,"line":[0,0,0,0,5,6]}]
 };
 
-function showBusNumber(destination){
-    var res = "";
-    for(var i=1; i<=6; i++){
-        if(stations.data[destination].line[i-1]!=0){
-            if(res == "") {
-                res += i;
-            } else {
-                res += ", "+i;
-            }
-        }
-    }
-    console.log(res);
-}
-
-//return if the bus number can reach the destination or not
-function isBusNumber(destination,line){
-    return stations.data[destination].line[line-1]!=0
-}
+// function showBusNumber(destination){
+//     var res = "";
+//     for(var i=1; i<=6; i++){
+//         if(stations.data[destination].line[i-1]!=0){
+//             if(res == "") {
+//                 res += i;
+//             } else {
+//                 res += ", "+i;
+//             }
+//         }
+//     }
+//     console.log(res);
+// }
+//
+// //return if the bus number can reach the destination or not
+// function isBusNumber(destination,line){
+//     return stations.data[destination].line[line-1]!=0
+// }
 
 //copied from https://stackoverflow.com/questions/639695/
 function measureDist(lat1, lon1, lat2, lon2){  // generally used geo measurement function
@@ -201,6 +201,11 @@ function setPosition(pos) {
     text1.innerHTML = "You are now at " +thisStationName(station);
     text2.innerHTML = "Next station: " +nextStationName(station,line);
     text3.innerHTML = "In "+ remainingStops(station,line,destination)+" stops, you will reach your destination.";
+
+    if(remainingStops(station,line,destination)==1){
+      console.log("trigger")
+      setTimeout(endFuntion,500);
+    }
 }
 
 var routeline = [
@@ -274,4 +279,8 @@ function getAllUrlParams(url) {
   }
 
   return obj;
+}
+function endFuntion(){
+  console.log("call");
+  location.href='../html/endScreen.html'
 }
